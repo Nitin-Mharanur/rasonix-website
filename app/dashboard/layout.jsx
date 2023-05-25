@@ -14,10 +14,8 @@ export default function DashboardLayout({ children }) {
         <main className="bg-gray-200 min-h-screen">
           <Sidebar>
           <Header/>
-         
           {children}
           </Sidebar>
-          
         </main>
       </body>
     </html>
