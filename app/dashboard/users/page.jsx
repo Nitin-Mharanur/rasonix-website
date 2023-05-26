@@ -26,7 +26,7 @@ const page = async () => {
     },
     {
       name:"Action",
-      selector:(row)=><Link className="rounded-sm" href={`/${row.id}`} >Delete</Link>
+      selector:(row)=><Link className="btn p-3 m-3 rounded-sm bg-yellow-500" href={`dashboard/users/${row.id}`}>Edit</Link>
     },
   
   ]
