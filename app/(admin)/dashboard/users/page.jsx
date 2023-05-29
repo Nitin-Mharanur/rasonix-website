@@ -19,7 +19,7 @@ const page = () => {
       res.json()
     );
     setLoading(false);
-    toast.success("all users");
+
     setUsers(res);
   }
   useEffect(() => {
@@ -55,7 +55,6 @@ const page = () => {
             Edit
           </Link>
           <DeleteUser id={row.id} setUsers={setUsers} />
-          {/* <button className="bg-red-500">Delete</button> */}
         </div>
       ),
     },
