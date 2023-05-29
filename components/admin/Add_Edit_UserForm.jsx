@@ -13,7 +13,7 @@ function Add_Edit_UserForm({
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="Name"
+              htmlFor="Name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Full Name
@@ -31,7 +31,7 @@ function Add_Edit_UserForm({
           </div>
           <div>
             <label
-              for="email"
+              htmlFor="email"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Email
@@ -50,7 +50,7 @@ function Add_Edit_UserForm({
 
           <div>
             <label
-              for="phone_no"
+              htmlFor="phone_no"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Phone number
@@ -73,7 +73,7 @@ function Add_Edit_UserForm({
           </div>
           <div>
             <label
-              for="role"
+              htmlFor="role"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Role

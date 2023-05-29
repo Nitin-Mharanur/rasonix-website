@@ -37,7 +37,7 @@ const Sidebar = ({ children }) => {
             </Link>
         </div>
       </div>
-      <main className="ml-20 w-full">{children}</main>
+      <div className="ml-20 w-full">{children}</div>
     </div>
   );
 };
