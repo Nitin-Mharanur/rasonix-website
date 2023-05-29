@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 //   const res = await fetch("http://127.0.0.1:8000/api/user").then((res) =>
 //     res.json()
 //   );
-const page = () => {
+const Page = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   async function fetchUsers() {
@@ -77,4 +77,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
