@@ -1,10 +1,17 @@
 "use client";
 import React, { useState } from "react";
-
+import { useRouter } from "next/navigation";
+import Loading from "@/components/Loading";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function page() {
+  const router = useRouter();
   const [detail, setDetails] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState({});
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     const res = await fetch("http://127.0.0.1:8000/api/user/add", {
       method: "POST",
       headers: {
@@ -12,6 +19,16 @@ function page() {
       },
       body: JSON.stringify({ ...detail }),
     }).then((res) => res.json());
+    console.log(res.success);
+    setLoading(false);
+    setResponse(res);
+    if (res.success) {
+      router.push("/dashboard/users");
+      // toast.success("user added successully");
+    }
+  }
+  if (loading) {
+    return <Loading />;
   }
   return (
     <div className="w-full p-4 h-screen flex justify-center">
@@ -32,6 +49,7 @@ function page() {
               placeholder="Andrew Doe"
               onInput={(e) => setDetails({ ...detail, name: e.target.value })}
             />
+            {response?.errors?.name && <p>{response?.errors?.name[0]}</p>}
           </div>
           <div>
             <label
@@ -48,6 +66,7 @@ function page() {
               placeholder="example@abc.com"
               onInput={(e) => setDetails({ ...detail, email: e.target.value })}
             />
+            {response?.errors?.email && <p>{response?.errors?.email[0]}</p>}
           </div>
 
           <div>
@@ -68,6 +87,9 @@ function page() {
                 setDetails({ ...detail, phone_no: e.target.value })
               }
             />
+            {response?.errors?.phone_no && (
+              <p>{response?.errors?.phone_no[0]}</p>
+            )}
           </div>
           <div>
             <label
@@ -87,6 +109,7 @@ function page() {
               <option value="editor">Editor</option>
               <option value="user">User</option>
             </select>
+            {response?.errors?.role && <p>{response?.errors?.role[0]}</p>}
           </div>
         </div>
 

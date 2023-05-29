@@ -6,19 +6,18 @@ function DeleteUser({ id, setUsers }) {
       method: "DELETE",
     }).then((res) => res.json());
 
-    // setUsers(res);
-    // setUsers(res);
+    setUsers(res.data);
   }
   return (
-    <button
-      className="p-2 bg-red-600 rounded-md"
-      onClick={() => handleDelete(id)}
-    >
-      Delete
-    </button>
-    // <button className="btn btn-error" onClick={() => handleDelete(id)}>
+    // <button
+    //   className="p-2 bg-red-600 rounded-md"
+    //   onClick={() => handleDelete(id)}
+    // >
     //   Delete
     // </button>
+    <button className="btn btn-error" onClick={() => handleDelete(id)}>
+      Delete
+    </button>
   );
 }
 
