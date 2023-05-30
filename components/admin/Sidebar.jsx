@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {RxDashboard, RxPerson, RxSketchLogo} from 'react-icons/rx'
-import {FiSettings} from 'react-icons/fi'
+import {BsBriefcase} from 'react-icons/bs'
 import {BiCategoryAlt} from 'react-icons/bi'
 const Sidebar = ({ children }) => {
   return (
@@ -30,9 +30,9 @@ const Sidebar = ({ children }) => {
                     <BiCategoryAlt size={20}/>
                 </div>
             </Link>
-            <Link href='/'>
+            <Link href='/dashboard/jobs'>
                 <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
-                    <FiSettings size={20}/>
+                    <BsBriefcase size={20}/>
                 </div>
             </Link>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
-function Add_edit_CategoryForm({name,setName,text,response,submit}) {
-
+function Add_edit_CategoryForm({name,setName,text,response,handleSubmit}) {
+      
   return (
     <div className="w-full p-4 h-screen flex justify-center">
       <form className="w-[70%]" onSubmit={(e) => handleSubmit(e)}>

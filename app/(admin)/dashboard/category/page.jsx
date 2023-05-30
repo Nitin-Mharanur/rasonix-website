@@ -1,23 +1,29 @@
-'use client'
-import Table from '@/components/Table';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+"use client";
+import Table from "@/components/Table";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 function Page() {
-  const [category, setCategory]=useState([]);
+  const [category, setCategory] = useState([]);
   async function fetchCategory() {
-    setLoading(true);
-    const res = await fetch("http://127.0.0.1:8000/api/categories").then((res) =>
-      res.json()
-      
+    const res = await fetch("http://127.0.0.1:8000/api/categories").then(
+      (res) => res.json()
     );
-    console.log('RESPONSE',res)
     setCategory(res);
-   
   }
+
+  async function handleDelete(id){
+   let data = await fetch(`http://127.0.0.1:8000/api/categories/${id}/delete`,{
+    method:'DELETE'
+   }).then(
+      (res) => res.json()
+    );
+    setCategory(res.category)
+  }
+  
   useEffect(() => {
     fetchCategory();
-  }, []);
+  }, [category]);
   const columns = [
     {
       name: "Category Name",
@@ -34,27 +40,29 @@ function Page() {
           >
             Edit
           </Link>
-          
+          <button className="bg-red-900 p-2 rounded-sm" onClick={(e)=>handleDelete(row.id)}>
+           Delete
+          </button>
         </div>
       ),
     },
   ];
-  console.log('DATA',category)
+
   return (
     <>
-    <div className='p-4'>
-      <Table columns={columns} data={category} pagination fixedHeader />
-    </div>
-     <div className="absolute top-[80%] right-4">
-     <Link
-       className="shadow-lg bg-green-500 p-2 rounded-md"
-       href={"dashboard/category/add"}
-     >
-       Add Category
-     </Link>
-   </div>
-   </>
-  )
+      <div className="p-4">
+        <Table columns={columns} data={category} pagination fixedHeader />
+      </div>
+      <div className="absolute top-[80%] right-4">
+        <Link
+          className="shadow-lg bg-green-500 p-2 rounded-md"
+          href={"dashboard/category/add"}
+        >
+          Add Category
+        </Link>
+      </div>
+    </>
+  );
 }
 
 export default Page;
