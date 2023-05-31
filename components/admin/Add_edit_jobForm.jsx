@@ -8,8 +8,9 @@ function Add_edit_jobForm({
     text,
     categories
 }){
-  console.log(categories)
+  console.log(detail)
   return (
+    <div>
     <div className="w-full p-4 h-screen flex justify-center">
     <form className="w-[70%]" onSubmit={(e) => handleSubmit(e)}>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -29,7 +30,7 @@ function Add_edit_jobForm({
             placeholder="Andrew Doe"
             onInput={(e) => setDetails({ ...detail, title: e.target.value })}
           />
-          {response?.errors?.name && <p>{response?.errors?.title[0]}</p>}
+          {response?.errors?.title && <p>{response?.errors?.title[0]}</p>}
         </div>
         <div>
           <label
@@ -47,32 +48,9 @@ function Add_edit_jobForm({
             placeholder="example@abc.com"
             onInput={(e) => setDetails({ ...detail, description: e.target.value })}
           />
-          {response?.errors?.email && <p>{response?.errors?.description[0]}</p>}
+          {response?.errors?.description && <p>{response?.errors?.description[0]}</p>}
         </div>
 
-        {/* <div>
-          <label
-            htmlFor="categories_id"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Category Id
-          </label>
-          <input
-            type="tel"
-            id="categories_id"
-            name="categories_id"
-            value={detail.categories_id}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="123-45-678"
-            // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            onInput={(e) =>
-              setDetails({ ...detail, categories_id: e.target.value })
-            }
-          />
-          {response?.errors?.phone_no && (
-            <p>{response?.errors?.categories_id[0]}</p>
-          )}
-        </div> */}
         <div>
           <label
             htmlFor="Category_id"
@@ -94,7 +72,7 @@ function Add_edit_jobForm({
             ))}
             
           </select>
-          {response?.errors?.role && <p>{response?.errors?.categories_id[0]}</p>}
+          {response?.errors?.categories_id && <p>{response?.errors?.categories_id[0]}</p>}
         </div>
       </div>
 
@@ -122,6 +100,7 @@ function Add_edit_jobForm({
         {text}
       </button>
     </form>
+  </div>
   </div>
   )
 }

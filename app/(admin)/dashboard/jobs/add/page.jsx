@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 export default function Page() {
   let obj = { title: "", description: "", category_id: "", document: ""};
   const [detail,setDetails]=useState({obj});
-  const [response,SetResponse]=useState();
+  const [response,SetResponse]=useState({});
   const [category,setCategory]=useState();
   async function fetchCategory() {
     const res = await fetch("http://127.0.0.1:8000/api/categories").then(
@@ -13,9 +13,9 @@ export default function Page() {
     );
     setCategory(res);
   }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
     const res = await fetch("http://127.0.0.1:8000/api/jobs/add", {
       method: "POST",
       headers: {
@@ -23,9 +23,7 @@ export default function Page() {
       },
       body: JSON.stringify({ ...detail }),
     }).then((res) => res.json());
-
-    setLoading(false);
-    setResponse(res);
+    SetResponse(res);
     if (res.success) {
       router.push("/dashboard/users");
       // toast.success("user added successully");
@@ -34,9 +32,7 @@ export default function Page() {
   useEffect(()=>{
     fetchCategory();
   },[])
-  function handleSubmit(){
-    alert('hello')
-  }
+  
   return (
     <div className='p-4'>
       <Add_edit_jobForm
@@ -45,7 +41,7 @@ export default function Page() {
        response={response}
        handleSubmit={handleSubmit}
        text='Add'
-      categories={category}
+       categories={category}
        />
       
     </div>
