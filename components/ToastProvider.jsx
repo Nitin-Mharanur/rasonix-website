@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ToastProvider = () => {
   return (
+    <div>
     <ToastContainer
       position="top-right"
       autoClose={3000} // Adjust the duration as per your preference
@@ -14,6 +15,7 @@ const ToastProvider = () => {
       draggable
       pauseOnHover
     />
+    </div>
   );
 };
 

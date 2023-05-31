@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {RxDashboard, RxPerson, RxSketchLogo} from 'react-icons/rx'
-import {FiSettings} from 'react-icons/fi'
+import {BsBriefcase} from 'react-icons/bs'
+import {BiCategoryAlt} from 'react-icons/bi'
 const Sidebar = ({ children }) => {
   return (
     <div className="flex">
@@ -14,29 +15,29 @@ const Sidebar = ({ children }) => {
                 </div>
             </Link>
             <span className="border-b-[1px] border-gray-400 w-full p-2"></span>
-            <Link href='/'>
+            <Link href='/dashboard'>
                 <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
                     <RxDashboard size={20}/>
                 </div>
             </Link>
-            <Link href='/'>
+            <Link href='/dashboard/users'>
                 <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
                     <RxPerson size={20}/>
                 </div>
             </Link>
-            <Link href='/'>
+            <Link href='/dashboard/category'>
                 <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
-                    <RxDashboard size={20}/>
+                    <BiCategoryAlt size={20}/>
                 </div>
             </Link>
-            <Link href='/'>
+            <Link href='/dashboard/jobs'>
                 <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
-                    <FiSettings size={20}/>
+                    <BsBriefcase size={20}/>
                 </div>
             </Link>
         </div>
       </div>
-      <main className="ml-20 w-full">{children}</main>
+      <div className="ml-20 w-full">{children}</div>
     </div>
   );
 };
