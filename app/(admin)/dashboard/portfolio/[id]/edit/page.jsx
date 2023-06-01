@@ -1,30 +1,29 @@
 "use client";
-import Add_edit_jobForm from "@/components/admin/Add_edit_jobForm";
+import Add_edit_portfolio from "@/components/admin/Add_edit_portfolio";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-export default function Page({ params }) {
+const Page = ({ params }) => {
   const router = useRouter();
   let obj = { title: "", description: "", category_id: "", document: "" };
   const [detail, setDetails] = useState(obj);
   const [response, setResponse] = useState({});
-  const [category, setCategory] = useState();
+
   async function fetchData() {
     let res = await fetch(
-      `http://127.0.0.1:8000/api/jobs/${params.id}/edit`
+      `http://127.0.0.1:8000/api/portfolios/${params.id}`
     ).then((res) => res.json());
     setDetails(res);
+    
   }
-  async function fetchCategory() {
-    const res = await fetch("http://127.0.0.1:8000/api/categories").then(
-      (res) => res.json()
-    );
-    setCategory(res);
-  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await fetch(
-      `http://127.0.0.1:8000/api/jobs/${params.id}/update`,
+      `http://127.0.0.1:8000/api/portfolios/${params.id}/update`,
       {
         method: "PUT",
         headers: {
@@ -33,29 +32,24 @@ export default function Page({ params }) {
         body: JSON.stringify(detail),
       }
     ).then((res) => res.json());
-
     setResponse(res);
     if (res.success) {
-      router.push("/dashboard/jobs");
+      router.push("/dashboard/portfolio");
       alert(res.message);
     }
   }
-
-  useEffect(() => {
-    fetchData();
-    fetchCategory();
-  }, []);
- 
+  console.log('RESPONSE',response)
   return (
-    <div>
-      <Add_edit_jobForm
+    <div className="p-4">
+      <Add_edit_portfolio
         setDetails={setDetails}
         handleSubmit={handleSubmit}
         detail={detail}
         response={response}
-        categories={category}
         text="Update"
       />
     </div>
   );
-}
+};
+
+export default Page;

@@ -35,6 +35,12 @@ const Sidebar = ({ children }) => {
                     <BsBriefcase size={20}/>
                 </div>
             </Link>
+
+            <Link href='/dashboard/portfolio'>
+                <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
+                    <BsBriefcase size={20}/>
+                </div>
+            </Link>
         </div>
       </div>
       <div className="ml-20 w-full">{children}</div>
