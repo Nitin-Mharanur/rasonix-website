@@ -26,7 +26,6 @@ function Page({ params }) {
         body: JSON.stringify(detail),
       }
     ).then((res) => res.json());
-    console.log(res);
     setResponse(res);
     if (res.success) {
       router.push("/dashboard/users");

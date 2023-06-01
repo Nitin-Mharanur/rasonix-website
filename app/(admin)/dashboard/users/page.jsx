@@ -13,15 +13,32 @@ import "react-toastify/dist/ReactToastify.css";
 const Page = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  async function fetchUsers() {
-    setLoading(true);
-    const res = await fetch("http://127.0.0.1:8000/api/users").then((res) =>
-      res.json()
-    );
-    setLoading(false);
+  // async function fetchUsers() {
+  //   setLoading(true);
+  //   const res = await fetch("http://127.0.0.1:8000/api/users").then((res) => {
+  //     return res.json();
+  //   });
+  //   setLoading(false);
 
-    setUsers(res);
+  //   setUsers(res);
+  // }
+  async function fetchUsers() {
+    try {
+      setLoading(true);
+      const response = await fetch("http://127.0.0.1:8000/api/users");
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error(error);
+      // Handle the error state or display an error message
+    } finally {
+      setLoading(false);
+    }
   }
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -59,7 +76,7 @@ const Page = () => {
       ),
     },
   ];
-  if (loading) return <Loading />;
+  // if (loading) return <Loading />;
   return (
     <>
       <div className="p-4">
