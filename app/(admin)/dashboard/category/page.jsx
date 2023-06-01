@@ -20,6 +20,9 @@ function Page() {
       (res) => res.json()
     );
     setCategory(res.category)
+    if(res.success){
+      alert(res.message)
+    }
   }
   
   useEffect(() => {
