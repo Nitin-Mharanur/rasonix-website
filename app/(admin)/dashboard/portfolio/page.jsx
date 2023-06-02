@@ -11,6 +11,7 @@ const Page = () => {
       (res) => res.json()
     );
     setPortfolios(res.portfolio);
+    console.log(res);
   }
   useEffect(() => {
     fetchPortfolio();
@@ -26,6 +27,21 @@ const Page = () => {
     setPortfolios(data.portfolio);
     if (data.message) {
       alert(data.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    let data = await fetch(
+      `http://127.0.0.1:8000/api/portfolios/${id}/delete`,
+      {
+        method: "DELETE",
+      }
+    ).then((res) => res.json());
+
+    console.log("delete", res);
+    setPortfolios(res.portfolio);
+    if (res.success) {
+      alert(res.message);
     }
   }
 

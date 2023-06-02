@@ -1,7 +1,12 @@
 import React from "react";
 
-function Add_edit_CategoryForm({name,setName,text,response,handleSubmit}) {
-      
+function Add_edit_CategoryForm({
+  name,
+  setName,
+  text,
+  response,
+  handleSubmit,
+}) {
   return (
     <div className="w-full p-4 h-screen flex justify-center">
       <form className="w-[70%]" onSubmit={(e) => handleSubmit(e)}>
@@ -22,7 +27,9 @@ function Add_edit_CategoryForm({name,setName,text,response,handleSubmit}) {
               placeholder="React / Javascript"
               onInput={(e) => setName(e.target.value)}
             />
-            {response?.errors?.name && <p className="text-red-800">{response?.errors?.name[0]}</p>}
+            {response?.errors?.name && (
+              <p className="text-red-800">{response?.errors?.name[0]}</p>
+            )}
           </div>
         </div>
         <button

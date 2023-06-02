@@ -92,12 +92,15 @@ function Add_Edit_UserForm({
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setDetails({ ...detail, role: e.target.value })}
             >
-              <option value="DEFAULT" disabled>
-                select an option
+              <option value="admin" defaultValue={detail.role == "admin"}>
+                Admin
               </option>
-              <option value="admin">Admin</option>
-              <option value="editor">Editor</option>
-              <option value="user">User</option>
+              <option value="editor" defaultValue={detail.role == "editor"}>
+                Editor
+              </option>
+              <option value="user" defaultValue={detail.role == "user"}>
+                User
+              </option>
             </select>
             <div>
               {response?.errors?.role && <p>{response?.errors?.role[0]}</p>}
@@ -107,7 +110,7 @@ function Add_Edit_UserForm({
 
         <div className="mb-6">
           <label
-            for="password"
+            htmlFor="password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Password

@@ -2,8 +2,9 @@
 import Add_edit_portfolio from "@/components/admin/Add_edit_portfolio";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const Page = () => {
+  const router = useRouter();
   let obj = { title: "", description: "", image_url: "", status: "" };
   const [detail, setDetails] = useState(obj);
   const [response, setResponse] = useState();
@@ -18,11 +19,13 @@ const Page = () => {
       body: JSON.stringify({ ...detail }),
     }).then((res) => res.json());
     setResponse(res);
-    if (res.success) {
-      router.push("/dashboard/portfolio");
-      alert(res.message);
-    }
+    console.log("add page",res)
   }
+  if (response?.success) {
+    router.push("/dashboard/portfolio");
+    alert(response?.message);
+  }
+
   return (
     <div className="p-4">
       <Add_edit_portfolio
