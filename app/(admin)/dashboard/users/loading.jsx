@@ -2,7 +2,10 @@ import React from "react";
 
 function loading() {
   return (
-    <div className="bg-gray-200 min-h-screen flex justify-center items-center" role="status">
+    <div
+      className="bg-gray-200 min-h-screen flex justify-center items-center"
+      role="status"
+    >
       <svg
         aria-hidden="true"
         className="w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -19,7 +22,7 @@ function loading() {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 }
