@@ -1,6 +1,8 @@
 "use client";
 import Table from "@/components/Table";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
@@ -25,8 +27,8 @@ const Page = () => {
       }
     ).then((res) => res.json());
     setPortfolios(data.portfolio);
-    if (data.message) {
-      alert(data.message);
+    if (data.success) {
+      toast.success(data.message);
     }
   }
 
@@ -38,10 +40,9 @@ const Page = () => {
       }
     ).then((res) => res.json());
 
-    console.log("delete", res);
-    setPortfolios(res.portfolio);
-    if (res.success) {
-      alert(res.message);
+    setPortfolios(data.portfolio);
+    if (data.success) {
+      alert(data.message);
     }
   }
 
@@ -99,6 +100,7 @@ const Page = () => {
           Add Portfolio
         </Link>
       </div>
+      <ToastContainer />
     </>
   );
 };
