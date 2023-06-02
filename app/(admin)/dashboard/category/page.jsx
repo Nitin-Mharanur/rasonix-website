@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 
 function Page() {
   const [category, setCategory] = useState([]);
+  
   async function fetchCategory() {
     const res = await fetch("http://127.0.0.1:8000/api/categories").then(
       (res) => res.json()
@@ -23,7 +24,7 @@ function Page() {
   
   useEffect(() => {
     fetchCategory();
-  }, [category]);
+  }, []);
   const columns = [
     {
       name: "Category Name",
