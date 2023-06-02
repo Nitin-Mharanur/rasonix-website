@@ -10,7 +10,6 @@ function Page() {
       res.json()
     );
     setJobs(res.data);
-    console.log(res.data);
   }
   useEffect(() => {
     fetchJobs();
@@ -46,6 +45,9 @@ function Page() {
           >
             Edit
           </Link>
+          <button className="bg-red-900 p-2 rounded-sm" onClick={(e)=>handleDelete(row.id)}>
+           Delete
+          </button>
         </div>
       ),
     },

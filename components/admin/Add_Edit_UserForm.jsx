@@ -27,7 +27,9 @@ function Add_Edit_UserForm({
               placeholder="Andrew Doe"
               onInput={(e) => setDetails({ ...detail, name: e.target.value })}
             />
-            {response?.errors?.name && <p>{response?.errors?.name[0]}</p>}
+            <div>
+              {response?.errors?.name && <p>{response?.errors?.name[0]}</p>}
+            </div>
           </div>
           <div>
             <label
@@ -45,7 +47,9 @@ function Add_Edit_UserForm({
               placeholder="example@abc.com"
               onInput={(e) => setDetails({ ...detail, email: e.target.value })}
             />
-            {response?.errors?.email && <p>{response?.errors?.email[0]}</p>}
+            <div>
+              {response?.errors?.email && <p>{response?.errors?.email[0]}</p>}
+            </div>
           </div>
 
           <div>
@@ -67,9 +71,11 @@ function Add_Edit_UserForm({
                 setDetails({ ...detail, phone_no: e.target.value })
               }
             />
-            {response?.errors?.phone_no && (
-              <p>{response?.errors?.phone_no[0]}</p>
-            )}
+            <div>
+              {response?.errors?.phone_no && (
+                <p>{response?.errors?.phone_no[0]}</p>
+              )}
+            </div>
           </div>
           <div>
             <label
@@ -95,7 +101,9 @@ function Add_Edit_UserForm({
                 User
               </option>
             </select>
-            {response?.errors?.role && <p>{response?.errors?.role[0]}</p>}
+            <div>
+              {response?.errors?.role && <p>{response?.errors?.role[0]}</p>}
+            </div>
           </div>
         </div>
 

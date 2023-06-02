@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function Page() {
   let obj = { title: "", description: "", category_id: "", document: ""};
-  const [detail,setDetails]=useState({obj});
+  const [detail,setDetails]=useState(obj);
   const [response,SetResponse]=useState({});
   const [category,setCategory]=useState();
   async function fetchCategory() {
