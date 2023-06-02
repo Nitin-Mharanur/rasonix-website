@@ -14,7 +14,6 @@ const Page = ({ params }) => {
       `http://127.0.0.1:8000/api/portfolios/${params.id}`
     ).then((res) => res.json());
     setDetails(res);
-    
   }
   useEffect(() => {
     fetchData();
@@ -22,6 +21,7 @@ const Page = ({ params }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(detail);
     let res = await fetch(
       `http://127.0.0.1:8000/api/portfolios/${params.id}/update`,
       {
@@ -32,13 +32,15 @@ const Page = ({ params }) => {
         body: JSON.stringify(detail),
       }
     ).then((res) => res.json());
+    console.log(res);
     setResponse(res);
+
     if (res.success) {
       router.push("/dashboard/portfolio");
       alert(res.message);
     }
   }
-  console.log('RESPONSE',response)
+
   return (
     <div className="p-4">
       <Add_edit_portfolio

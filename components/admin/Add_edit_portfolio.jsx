@@ -7,7 +7,7 @@ function Add_edit_portfolio({
   handleSubmit,
   text,
 }) {
-  console.log("DETAIL", detail);
+  // console.log("DETAIL", detail);
   return (
     <div>
       <div className="w-full p-4 h-screen flex justify-center">
@@ -94,8 +94,12 @@ function Add_edit_portfolio({
               <option selected disabled>
                 Select Status
               </option>
-              <option value="hidden" selected={detail.status == "hidden"}>Hide</option>
-              <option value="visible" selected={detail.status == "visible"}>Show</option>
+              <option value="hidden" selected={detail.status == "hidden"}>
+                Hide
+              </option>
+              <option value="visible" selected={detail.status == "visible"}>
+                Show
+              </option>
             </select>
           </div>
 

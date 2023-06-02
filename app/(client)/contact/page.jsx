@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+
 function page() {
   let obj = {
     name: "",
@@ -67,7 +68,7 @@ function page() {
               <input
                 type="text"
                 className="outline-0 rounded w-full bg-slate-200 p-2"
-                placeholder="Enter your Phone no"
+                placeholder="Enter your Phone number"
                 value={data.phone_number}
                 onChange={(e) =>
                   setData({ ...data, phone_number: e.target.value })
@@ -81,7 +82,7 @@ function page() {
               <textarea
                 name=""
                 id=""
-                rows="6"
+                rows="4"
                 className="outline-0 rounded w-full bg-slate-200 p-2"
                 placeholder="Go ahead we are listening...."
                 value={data.message}
@@ -102,8 +103,8 @@ function page() {
               src="/contactsvg.svg"
               alt="contact Logo"
               className="dark:invert"
-              width={270}
-              height={200}
+              width={250}
+              height={180}
               priority
             />
             <div className="flex flex-col mt-10 gap-6 ml-3">

@@ -88,18 +88,16 @@ function Add_Edit_UserForm({
               type="text"
               id="company"
               name="role"
+              defaultValue={detail.role ? detail.role : "DEFAULT"}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setDetails({ ...detail, role: e.target.value })}
             >
-              <option value="admin" selected={detail.role == "admin"}>
-                Admin
+              <option value="DEFAULT" disabled>
+                select an option
               </option>
-              <option value="editor" selected={detail.role == "editor"}>
-                Editor
-              </option>
-              <option value="user" selected={detail.role == "user"}>
-                User
-              </option>
+              <option value="admin">Admin</option>
+              <option value="editor">Editor</option>
+              <option value="user">User</option>
             </select>
             <div>
               {response?.errors?.role && <p>{response?.errors?.role[0]}</p>}

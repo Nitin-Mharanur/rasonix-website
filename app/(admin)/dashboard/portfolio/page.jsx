@@ -16,18 +16,18 @@ const Page = () => {
     fetchPortfolio();
   }, []);
 
-  async function handleDelete(id){
-    let data = await fetch(`http://127.0.0.1:8000/api/portfolios/${id}/delete`,{
-     method:'DELETE'
-    }).then(
-       (res) => res.json()
-     );
-     setPortfolios(res.portfolio);
-     if(res.message){
-      alert(res.message)
-     }
-   }
-  
+  async function handleDelete(id) {
+    let data = await fetch(
+      `http://127.0.0.1:8000/api/portfolios/${id}/delete`,
+      {
+        method: "DELETE",
+      }
+    ).then((res) => res.json());
+    setPortfolios(data.portfolio);
+    if (data.message) {
+      alert(data.message);
+    }
+  }
 
   const columns = [
     {
@@ -60,8 +60,11 @@ const Page = () => {
           >
             Edit
           </Link>
-          <button className="bg-red-900 p-2 rounded-sm" onClick={(e)=>handleDelete(row.id)}>
-           Delete
+          <button
+            className="bg-red-600 p-2 rounded-md"
+            onClick={(e) => handleDelete(row.id)}
+          >
+            Delete
           </button>
         </div>
       ),
@@ -69,18 +72,18 @@ const Page = () => {
   ];
   return (
     <>
-    <div className="p-4">
-      <Table columns={columns} data={portfolio} pagination fixedHeader />
-    </div>
-     <div className="absolute top-[80%] right-4">
-     <Link
-       className="shadow-lg bg-green-500 p-2 rounded-md"
-       href={"dashboard/portfolio/add"}
-     >
-       Add Portfolio
-     </Link>
-   </div>
-   </>
+      <div className="p-4">
+        <Table columns={columns} data={portfolio} pagination fixedHeader />
+      </div>
+      <div className="absolute top-[80%] right-4">
+        <Link
+          className="shadow-lg bg-green-500 p-2 rounded-md"
+          href={"dashboard/portfolio/add"}
+        >
+          Add Portfolio
+        </Link>
+      </div>
+    </>
   );
 };
 

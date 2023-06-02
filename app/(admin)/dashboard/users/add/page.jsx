@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Add_Edit_UserForm from "@/components/admin/Add_Edit_UserForm";
 function Page() {
@@ -25,8 +25,10 @@ function Page() {
     setLoading(false);
     setResponse(res);
     if (res.success) {
-      router.push("/dashboard/users");
-      // toast.success("user added successully");
+      toast.success("user added successfully");
+      setTimeout(() => {
+        router.push("/dashboard/users");
+      }, 2000);
     }
   }
 
@@ -34,13 +36,16 @@ function Page() {
     return <Loading />;
   }
   return (
-    <Add_Edit_UserForm
-      handleSubmit={handleSubmit}
-      detail={detail}
-      setDetails={setDetails}
-      response={response}
-      text="Add"
-    />
+    <>
+      <Add_Edit_UserForm
+        handleSubmit={handleSubmit}
+        detail={detail}
+        setDetails={setDetails}
+        response={response}
+        text="Add"
+      />
+      <ToastContainer autoClose={2000} />
+    </>
   );
 }
 
