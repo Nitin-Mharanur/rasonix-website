@@ -94,8 +94,8 @@ function Add_edit_portfolio({
               <option selected disabled>
                 Select Status
               </option>
-              <option value="hidden" selected={detail.status == "hidden"}>Hide</option>
-              <option value="visible" selected={detail.status == "visible"}>Show</option>
+              <option value="hidden" defaultValue={detail.status == "hidden"}>Hide</option>
+              <option value="visible" defaultValue={detail.status == "visible"}>Show</option>
             </select>
           </div>
 

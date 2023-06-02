@@ -11,6 +11,7 @@ const Page = () => {
       (res) => res.json()
     );
     setPortfolios(res.portfolio);
+    console.log(res)
   }
   useEffect(() => {
     fetchPortfolio();
@@ -22,8 +23,10 @@ const Page = () => {
     }).then(
        (res) => res.json()
      );
+    
+     console.log("delete",res);
      setPortfolios(res.portfolio);
-     if(res.message){
+     if(res.success){
       alert(res.message)
      }
    }
